@@ -9,47 +9,49 @@ import Home from './Screens/home';
 import Login from './Screens/Login';
 import Feed from './Screens/feed';
 
-
-function BottomTabs(){
+export default function App() {
   const BottomTab = createBottomTabNavigator();
   return(
-    <BottomTab.Navigator 
-    screenOptions={{
-      tabBarActiveTintColor:'#6e424b',
-      tabBarActiveBackgroundColor:'#d6b6cb',
-      headerStyle:{backgroundColor: '#d6b6cb'},
-      headerTintColor: '#841584',
+    <NavigationContainer>
+      <BottomTab.Navigator 
+      screenOptions={{
+        tabBarActiveTintColor:'#6e424b',
+        tabBarActiveBackgroundColor:'#d6b6cb',
+        headerStyle:{backgroundColor: '#d6b6cb'},
+        headerTintColor: '#841584',
+      }}>
+        <BottomTab.Screen name='Login' component={Home}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="login" size={30} color="#FF007F" />
+          ),
+        }} />
+        <BottomTab.Screen name='Home' component={Home}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="home" size={30} color="#FF007F" />
+          ),
+        }} />
+        <BottomTab.Screen name='Feed' component={Feed}
+        options={{
+          tabBarIcon: () => (
+            <MaterialIcons name="feed" size={30} color="#FF007F" />
+          )
+        }} />
 
-    }}>
-      <BottomTab.Screen name='Home' component={Home}
-      options={{
-        tabBarIcon: () => (
-          <MaterialIcons name="home" size={30} color="#FF007F" />
-        ),
-      }} />
-      <BottomTab.Screen name='Feed' component={Feed}
-      options={{
-        tabBarIcon: () => (
-          <MaterialIcons name="feed" size={30} color="#FF007F" />
-        )
-      }} />
-
-    </BottomTab.Navigator>
+      </BottomTab.Navigator>    
+    </NavigationContainer>   
+ 
   )
 }
 
-export default function App() {
 
-  const Stack = createStackNavigator();
 
-  return (
 
-    <NavigationContainer>
-      <Stack.Navigator>
-      <Stack.Screen name='Login' component={Login}/>
-      <Stack.Screen options={{headerShown:false}} name='HomeTab' component={BottomTabs}/>
-      </Stack.Navigator>    
-    </NavigationContainer>   
-  );
-}
+
+
+
+    
+     
+
 
