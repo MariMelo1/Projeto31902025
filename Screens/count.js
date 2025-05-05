@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function Count(){
 
-    const [contador, setContador] = useState(2);
+    const [contador, setContador] = useState(0);
 
     function Aumentar(){
         setContador(contador + 1)
