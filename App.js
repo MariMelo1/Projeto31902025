@@ -9,6 +9,7 @@ import Home from './Screens/home';
 import Login from './Screens/Login';
 import Feed from './Screens/feed';
 import Count from './Screens/count';
+import Product from './Screens/Product';
 
 function BottomTab() {
   const Tab = createBottomTabNavigator();
@@ -17,6 +18,7 @@ function BottomTab() {
       <Tab.Screen  name='Hometab' component={Home}/>
       <Tab.Screen  name='Feedtab' component={Feed}/>
       <Tab.Screen   name='Countab' component={Count}/>
+      <Tab.Screen name='banana' component={Product}/>
     </Tab.Navigator>
   )
 }
