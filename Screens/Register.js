@@ -1,6 +1,8 @@
 
 import { View, TextInput, Button,Text, StyleSheet,} from "react-native"
 import {useState} from 'react'
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../controller";
 
 
 export default function Register({navigation}){
@@ -8,6 +10,17 @@ export default function Register({navigation}){
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     
+    const RegistroUsuario = () => {
+        createUserWithEmailAndPassword(auth, email, senha)
+  .then((userCredential) => {
+    console.log('usuario cadastrado!', userCredential.user.email);
+    navigation.navigate('TelaLogin');
+  })
+  .catch((error) => {
+    console.log('error', error.message);
+    
+  });
+    }
 
     return(
         <View style={styles.container} >
@@ -29,13 +42,10 @@ export default function Register({navigation}){
             <Button
             color={'#FF007F'}
             title="Cadastrar"
+            onPress={RegistroUsuario}
         
             />
-            <Button
-            color={'#FF007F'}
-            title="Login"
-            onPress={() => navigation.navigate('TelaLogin')}
-            />
+      
            
         </View>
 
