@@ -1,5 +1,5 @@
 
-import { View, TextInput, Button,Text, StyleSheet,} from "react-native"
+import { View, TextInput, Button,Text, StyleSheet,TouchableOpacity} from "react-native"
 import { useState } from "react"
 
 export default function Login({navigation}){
@@ -25,8 +25,19 @@ export default function Login({navigation}){
             title="Login"
             onPress={() => navigation.navigate('Home')}
             />
-            <Text>Nome: {nome}</Text>
-            <Text>Senha: {senha}</Text>
+
+            <Button
+                color={'#FF007F'}
+                title="Cadastre-se"
+                
+            />
+             <TouchableOpacity 
+             onPress={() => navigation.navigate('Cadastro')}>
+                <Text style={styles.txtcadastro}>Cadastre-se</Text>
+            </TouchableOpacity>
+
+            {/* <Text>Nome: {nome}</Text>
+            <Text>Senha: {senha}</Text> */}
         </View>
     )
 }
@@ -42,5 +53,9 @@ const styles = StyleSheet.create({
     input:{
         borderWidth: 1,
         borderColor: '#FF007F'
+    },
+    txtcadastro: {
+        color: '#FF007F', 
+        fontSize: 20 
     }
 })

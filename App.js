@@ -10,6 +10,7 @@ import Login from './Screens/Login';
 import Feed from './Screens/feed';
 import Count from './Screens/count';
 import Product from './Screens/Product';
+import Register from './Screens/Register';
 
 function BottomTab() {
   const Tab = createBottomTabNavigator();
@@ -28,6 +29,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='TelaLogin' component={Login} />
+        <Stack.Screen name='Cadastro' component={Register}/>
         <Stack.Screen options={{headerShown:false}} name='Home' component={BottomTab}/>
       </Stack.Navigator>
     </NavigationContainer>    
