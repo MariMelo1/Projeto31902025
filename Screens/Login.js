@@ -5,11 +5,17 @@ import {auth} from '../controller';
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login({navigation}){
-    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const VerificaUser = () =>{
-        
+    const VerificaUser = () => {
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                    navigation.navigate('Home')
+            })
+            .catch((error) => {
+                    console.log('erro ao logar: ', error.message);
+            });              
     }
 
     return(
@@ -18,19 +24,20 @@ export default function Login({navigation}){
             <TextInput
             style={styles.input}
             placeholder="Nome"
-            value={nome}
-            onChangeText={setNome}
+            value={email}
+            onChangeText={setEmail}
             />
             <TextInput
             style={styles.input}
             placeholder="Senha"
             value={senha}
             onChangeText={setSenha} />
+
             <Button
             color={'#FF007F'}
-            title="Login"
-            onPress={() => navigation.navigate('Home')}/>
-
+            title="Login" 
+            onPress={VerificaUser}
+            />
              <TouchableOpacity 
              onPress={() => navigation.navigate('Cadastro')}>
                 <Text style={styles.txtcadastro}>Cadastre-se</Text>
