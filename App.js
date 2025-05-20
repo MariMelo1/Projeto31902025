@@ -11,15 +11,18 @@ import Feed from './Screens/feed';
 import Count from './Screens/count';
 import Product from './Screens/Product';
 import Register from './Screens/Register';
+import AddProduct from './Screens/AddProduct';
 
 function BottomTab() {
   const Tab = createBottomTabNavigator();
   return(
     <Tab.Navigator>
+      <Tab.Screen name='AddProduto' component={AddProduct} />
+      <Tab.Screen name='banana' component={Product}/>
       <Tab.Screen  name='Hometab' component={Home}/>
       <Tab.Screen  name='Feedtab' component={Feed}/>
       <Tab.Screen   name='Countab' component={Count}/>
-      <Tab.Screen name='banana' component={Product}/>
+      
     </Tab.Navigator>
   )
 }
